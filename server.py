@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for
-import urllib2, urllib
+import urllib2, urllib, os
 
 twss_url = 'http://45.55.79.204:32768/api'
 
@@ -24,4 +24,5 @@ def submitted():
 if __name__ == "__main__":
     print('**** Flask Service Started ****')
     app.debug = True
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
