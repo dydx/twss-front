@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>That's What She Said</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    body {
+        background: #e1e1e1;
+    }
+    .container {
+        padding: 2em 0;
+    }
+    .main {
+        background: #f7f7f7;
+        border-radius: 8px;
+        padding: 2em 5em;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main col-md-6 col-md-offset-3">
+            <div class="row">
+                <h1>Is That What She Said?</h1>
+            </div>
+
+            <!-- need to export this to a template -->
+            <div class="row">
+                <form action="{{ url_for('submitted') }}" method="post" class="form-vertical">
+                    <div class="form-group">
+                        <textarea name="phrase" id="phrase" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-primary" value="Submit">
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>

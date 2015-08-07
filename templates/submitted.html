@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submitted!</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- need to extract this into an external file -->
+    <style type="text/css">
+    body {
+        background: #e1e1e1;
+    }
+    .container {
+        padding: 2em 0;
+    }
+    .main {
+        background: #f7f7f7;
+        border-radius: 8px;
+        padding: 2em 5em;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main col-md-6 col-md-offset-3">
+            <div class="row">
+                <h1>Is That What She Said?</h1>
+                <br>
+            </div>
+
+            <div class="row">
+                <div class="alert alert-success">
+                    <h3 id="twss"><span class="glyphicon glyphicon-ok"></span> Yes, that is what she said</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- need to extract this into an external file -->
+    <script>
+        // twss_data is filled out by Jinja / Flask
+        var twss_data = JSON.parse( {{data|tojson|safe}} );
+        console.log(twss_data);
+
+        // set our content
+        twss_status = '<span class="glyphicon glyphicon-ok"></span> Yes, that is what she said';
+        
+        // select our elements
+        twss_status_header = document.querySelector('#twss');
+
+        // quickly set if that was not what she said
+        if(false == twss_data.is_twss) {
+            twss_status = '<span class="glyphicon glyphicon-remove"></span> No, that\'s not what she said';
+            document.querySelector('.alert').classList.remove('alert-success');
+            document.querySelector('.alert').classList.add('alert-danger');
+        }
+
+        twss_status_header.innerHTML = twss_status;
+
+    </script>
+</body>
+</html>
